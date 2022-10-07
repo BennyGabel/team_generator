@@ -33,6 +33,5 @@ const questions = [{
                     }
 
 
-}
 
 ]
