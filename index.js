@@ -101,4 +101,6 @@ askManager().then(answers => {
     newManager.officeNumber = answers.officeNumber
 
     console.log(newManager)
-}).then(askEmployees())
+})
+
+.then(askEmployees())
