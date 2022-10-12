@@ -138,7 +138,58 @@ const employeeMenu = () => {
  }
 
  const addIntern = () => {
-    return inquirer.prompt()
+    inquirer.prompt(
+        [
+            {
+                type: 'input',
+                name: 'name',
+                message: 'Enter  name:',
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter intern\'s name!!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'EmployeeId',
+                message: 'Enter the intern\'s id:'
+            },
+            {
+                type: 'input',
+                name: 'emailAddress',
+                // Please note email validation
+                message: 'Enter the intern\'s email:', 
+                validate: function(email)
+                {
+                    // Regex mail check (return true if valid mail)
+                    return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+                }
+    
+            },
+            {
+                type: 'input',
+                name: 'school',
+                message: 'Enter the intern\'s school:',
+                validate: githubInput => {
+                    if (githubInput) {
+                        return true;
+                    } else {
+                        console.log('Please Enter the intern\'s school:');
+                        return false;
+                    }
+                }
+    
+            }            
+        ]
+    ).then(ansIntern=>{
+        console.log("ansIntern", ansIntern)
+        const newIntern = new Intern(ansIntern.name, ansIntern.EmployeeId, ansIntern.emailAddress)
+        ansIntern.school = ansIntern.school
+        console.log("new Intern", ansIntern)}).then(()=>employeeMenu())
 }
 
 
