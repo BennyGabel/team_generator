@@ -49,7 +49,100 @@ const askManager = () => {
                           )
                          }
 
+const employeeMenu = () => {
+    // var llCont = Boolean true
 
+    // while llCont {
+     inquirer.prompt([
+         {
+             type: 'list',
+             name: 'role',
+             message: 'Enter the persons role is:',
+             choices: ['Engineer', "Intern", "Quit"]
+         }]).then(ansEmployee=>{
+            console.log(ansEmployee)
+            switch (ansEmployee.role) {
+                case "Engineer":
+                    addEngineer()
+                    break
+
+                case "Intern":
+                    addIntern()
+                    break
+
+                case "Quit":
+                    console.log("Ending questions")
+                    break
+            }
+
+
+         })
+    }
+//  }
+        
+
+ const addEngineer = () => {
+    inquirer.prompt(
+        [{
+            type: 'input',
+            name: 'name',
+            message: 'Enter  name:',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter engineer\'s name!!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'EmployeeId',
+            message: 'Enter the engineer\'s id:'
+        },
+        {
+            type: 'input',
+            name: 'emailAddress',
+            // Please note email validation
+            message: 'Enter the engineer\'s email:', 
+            validate: function(email)
+            {
+                // Regex mail check (return true if valid mail)
+                return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+            }
+
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Enter the engineer\'s github username:',
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                } else {
+                    console.log('Please Enter the engineer\'s github username!!:');
+                    return false;
+                }
+            }
+
+        }]                            
+    ).then(ansEngineer=>{
+        console.log("ansEngineer", ansEngineer)
+        const newEngineer = new Engineer(ansEngineer.name, ansEngineer.EmployeeId, ansEngineer.emailAddress)
+        newEngineer.github = ansEngineer.github
+        console.log("new Engineer", newEngineer)
+
+    
+    }).then(()=>employeeMenu())
+ }
+
+ const addIntern = () => {
+    return inquirer.prompt()
+}
+
+
+/*
 const askEmployees = otherEmployees => {
     return inquirer.prompt([
                             {
@@ -92,7 +185,7 @@ const askEmployees = otherEmployees => {
                            ]
                           )
                          }
-                         
+  */                       
 
 console.log("Before askManager")
 
@@ -103,4 +196,5 @@ askManager().then(answers => {
     console.log(newManager)
 })
 
-.then(askEmployees())
+
+.then(()=>employeeMenu())
