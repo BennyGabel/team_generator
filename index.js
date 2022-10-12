@@ -1,4 +1,4 @@
-const { default: inquirer } = require('inquirer');
+// const { default: inquirer } = require('inquirer');
 const inquire = require('inquirer');
 
 const Employee = require('./lib/Employee')
@@ -28,7 +28,6 @@ const askManager = () => {
                                 name: 'id',
                                 message: 'Enter the manager\'s id:'
                             },
-
                             {
                                 type: 'input',
                                 name: 'email',
