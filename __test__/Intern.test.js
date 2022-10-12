@@ -1,7 +1,7 @@
 const Intern = require('../lib/Intern')
 
 test("Return Name", () => {
-    const InternInfo = new Engineer("Intern1", "testId", "email@test.com")
+    const InternInfo = new Intern("Intern1", "testId", "email@test.com")
 
     expect(InternInfo.getRole()).toBe("Intern")
 })
