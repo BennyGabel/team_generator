@@ -1,5 +1,5 @@
 // const { default: inquirer } = require('inquirer');
-const inquire = require('inquirer');
+const inquirer = require('inquirer');
 
 const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
