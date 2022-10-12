@@ -6,8 +6,7 @@ const Engineer = require('./lib/Engineer')
 const Intern   = require('./lib/Intern')
 const Manager  = require('./lib/Manager')
 
-console.log("Program started")
-
+// Inquirer for a Manager
 const askManager = () => {
     return inquirer.prompt(
                            [{
@@ -49,10 +48,8 @@ const askManager = () => {
                           )
                          }
 
+// Inquirer menu/option/desicion Engineer ot Intern
 const employeeMenu = () => {
-    // var llCont = Boolean true
-
-    // while llCont {
      inquirer.prompt([
          {
              type: 'list',
@@ -78,9 +75,9 @@ const employeeMenu = () => {
 
          })
     }
-//  }
-        
 
+        
+// Inquirer for a Engineer
  const addEngineer = () => {
     inquirer.prompt(
         [{
@@ -125,18 +122,16 @@ const employeeMenu = () => {
                     return false;
                 }
             }
-
         }]                            
     ).then(ansEngineer=>{
         console.log("ansEngineer", ansEngineer)
         const newEngineer = new Engineer(ansEngineer.name, ansEngineer.EmployeeId, ansEngineer.emailAddress)
         newEngineer.github = ansEngineer.github
         console.log("new Engineer", newEngineer)
-
-    
     }).then(()=>employeeMenu())
  }
 
+ // Inquirer for a Intern
  const addIntern = () => {
     inquirer.prompt(
         [
@@ -193,52 +188,9 @@ const employeeMenu = () => {
 }
 
 
-/*
-const askEmployees = otherEmployees => {
-    return inquirer.prompt([
-                            {
-                                type: 'list',
-                                name: 'role',
-                                message: 'Enter the persons role is:',
-                                choices: ['Engineer', "Intern"]
-                            },
-                            {
-                                type: 'input',
-                                name: 'name',
-                                message: 'Enter  name:',
-                                validate: nameInput => {
-                                    if (nameInput) {
-                                        return true;
-                                    } else {
-                                        console.log('Please enter manager\'s name!!');
-                                        return false;
-                                    }
-                                }
-                            },
-                            {
-                                type: 'input',
-                                name: 'Employee Id:',
-                                message: 'Enter the manager\'s id:'
-                            },
-                            {
-                                type: 'input',
-                                name: 'email_address:',
-                                // Please note email validation
-                                message: 'Enter the manager\'s email:', 
-                                validate: function(email)
-                                {
-                                    // Regex mail check (return true if valid mail)
-                                    return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
-                                }
-
-                            },                            
-
-                           ]
-                          )
-                         }
-  */                       
 
 console.log("Before askManager")
+
 
 askManager().then(answers => {
     const newManager = new Manager(answers.name, answers.EmployeeId, answers.emailAddress)
@@ -246,6 +198,4 @@ askManager().then(answers => {
 
     console.log(newManager)
 })
-
-
 .then(()=>employeeMenu())
