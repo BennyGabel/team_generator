@@ -7,10 +7,36 @@
     background-color: lightblue;
 }
 
+
 */
 
+.row {
+    padding-top: 1cm;
+    padding-bottom: 1cm;
+}
+
+.company-title{
+    text-align: center;
+    background-color: red;
+    height: 100px;
+    vertical-align:middle;
 
 
+}
+.head-manager{
+    /* background-color: rgb(114, 146, 156); */
+    background-color: rgb(0, 110, 255);
+}
+
+.head-engineer{
+    background-color: rgb(114, 146, 156); 
+    
+}
+
+.head-intern{
+    background-color: lightblue;
+    
+}
 
 
 
