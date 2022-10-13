@@ -6,6 +6,8 @@ const Engineer = require('./lib/Engineer')
 const Intern   = require('./lib/Intern')
 const Manager  = require('./lib/Manager')
 
+let team = []
+
 var nId = 0
 
 // Inquirer for a Manager
@@ -63,20 +65,36 @@ const employeeMenu = () => {
             switch (ansEmployee.role) {
                 case "Engineer":
                     addEngineer()
+                    // console.log(team)
                     break
 
                 case "Intern":
                     addIntern()
+                    // console.log(team)
                     break
 
                 case "Quit":
                     console.log("Ending questions")
 
                     console.log("-------------------------")
-                    //console.log("Manager" ,  Manager[0]['name'] )
-                    console.log("Manager" ,  Manager.length )
-                    console.log("Engineer",  Engineer.length)
-                    console.log("Intern"  ,  Intern[0]['school'])
+                    console.log(team)
+                    console.log(team.length)
+                    console.log(team[0])
+                    console.log(team[0].name)
+                    console.log(team[0].id)
+                    console.log(team[0].getRole())
+
+                    console.log(team[1])
+                    console.log(team[1].getRole())
+
+                    console.log(team[2])
+                    console.log(team[2].getRole())
+
+
+                    // //console.log("Manager" ,  Manager[0]['name'] )
+                    // console.log("Manager" ,  Manager.length )
+                    // console.log("Engineer",  Engineer.length)
+                    // console.log("Intern"  ,  Intern[0]['school'])
                     
                     break
             }
@@ -136,6 +154,7 @@ const employeeMenu = () => {
         console.log("ansEngineer", ansEngineer)
         const newEngineer = new Engineer(ansEngineer.name, ansEngineer.EmployeeId, ansEngineer.emailAddress)
         newEngineer.github = ansEngineer.github
+        team.push(newEngineer)
         console.log("new Engineer", newEngineer)
     }).then(()=>employeeMenu())
  }
@@ -193,6 +212,7 @@ const employeeMenu = () => {
         console.log("ansIntern", ansIntern)
         const newIntern = new Intern(ansIntern.name, ansIntern.EmployeeId, ansIntern.emailAddress)
         ansIntern.school = ansIntern.school
+        team.push(newIntern)
         console.log("new Intern", ansIntern)}).then(()=>employeeMenu())
 }
 
@@ -204,6 +224,8 @@ console.log("Before askManager")
 askManager().then(answers => {
     const newManager = new Manager(answers.name, answers.EmployeeId, answers.emailAddress)
     newManager.officeNumber = answers.officeNumber
+
+    team.push(newManager)
 
     console.log(newManager)
 })
