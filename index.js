@@ -6,6 +6,8 @@ const Engineer = require('./lib/Engineer')
 const Intern   = require('./lib/Intern')
 const Manager  = require('./lib/Manager')
 
+var nId = 0
+
 // Inquirer for a Manager
 const askManager = () => {
     return inquirer.prompt(
@@ -69,6 +71,13 @@ const employeeMenu = () => {
 
                 case "Quit":
                     console.log("Ending questions")
+
+                    console.log("-------------------------")
+                    //console.log("Manager" ,  Manager[0]['name'] )
+                    console.log("Manager" ,  Manager.length )
+                    console.log("Engineer",  Engineer.length)
+                    console.log("Intern"  ,  Intern[0]['school'])
+                    
                     break
             }
 
