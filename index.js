@@ -208,7 +208,7 @@ const employeeMenu = () => {
     ).then(ansIntern=>{
         // console.log("ansIntern", ansIntern)
         const newIntern = new Intern(ansIntern.name, ansIntern.EmployeeId, ansIntern.emailAddress)
-        ansIntern.school = ansIntern.school
+        newIntern.school = ansIntern.school
         team.push(newIntern)}).then(()=>employeeMenu())
         // console.log("new Intern", ansIntern)}).then(()=>employeeMenu())
 }
@@ -219,7 +219,7 @@ const genHtml = () => {
     `<!DOCTYPE html>
         <html lang="en">
             <head>
-                <title>Bootstrap Example</title>
+                <title>Team Generator</title>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href="../dist/style.css">
@@ -261,7 +261,7 @@ const genHtml = () => {
                                             
                                             <p>Id: ${team[nCnt].id}</p>
                                             <hr>
-                                            <p>Email: ${team[nCnt].email}</p>
+                                            Email:<a href="mailto:${team[nCnt].email}">${team[nCnt].email}</a>
                                             <p>Office Number: ${team[nCnt].officeNumber}</p>
                 
                                         </div>    
@@ -282,7 +282,7 @@ const genHtml = () => {
                                             <p>Id: ${team[nCnt].id}</p>
                                             <hr>
                                             <p>Email: ${team[nCnt].email}</p>
-                                            <p>Github: ${team[nCnt].github}</p>
+                                            <p>Github: <a href="https://github.com/${team[nCnt].github}" target="_blank">${team[nCnt].github}</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -301,7 +301,7 @@ const genHtml = () => {
                                             <p>Id: ${team[nCnt].id}</p>
                                             <hr>
                                             <p>Email: ${team[nCnt].email}</p>
-                                            <p>School</p> ${team[nCnt].school}
+                                            <p>School ${team[nCnt].getSchool()}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -322,24 +322,6 @@ const genHtml = () => {
 
                 console.log("================================FINAL STRING")
                 console.log(blockCard)
-/*
-                    console.log(team)
-                    console.log(team.length)
-                    console.log(team[0])
-                    console.log(team[0].name)
-                    console.log(team[0].id)
-                    console.log(team[0].getRole())
-
-                    console.log(team[1])
-                    console.log(team[1].getRole())
-
-                    console.log(team[2])
-                    console.log(team[2].getRole())
-
-*/
-
-
-
 
     blockFoot =
             `  </div>
