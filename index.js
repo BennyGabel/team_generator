@@ -242,7 +242,9 @@ const genHtml = () => {
     let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
                             var nCnt = 1
                 for (let nCnt=0; nCnt<team.length; nCnt++) {
-                    switch (team[nCnt].getRole()) {
+                    cRole = team[nCnt].getRole()
+                    // switch (team[nCnt].getRole()) {
+                    switch (cRole) {
                         case 'Manager' :
                             blockOneC = 
                                `<div class="col-md-6 col-lg-3">
@@ -261,6 +263,7 @@ const genHtml = () => {
                                         </div>    
                                     </div>
                                 </div>`
+                            break
         
                         case 'Engineer':
                             blockOneC =
@@ -278,6 +281,7 @@ const genHtml = () => {
                                         </div>
                                     </div>
                                 </div>`
+                                break
 
                         case 'Intern'  :
                             blockOneC =
@@ -295,6 +299,7 @@ const genHtml = () => {
                                         </div>
                                     </div>
                                 </div>`
+                                break
         
                     }
 
