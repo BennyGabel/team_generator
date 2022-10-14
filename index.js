@@ -208,8 +208,8 @@ const employeeMenu = () => {
         // console.log("ansIntern", ansIntern)
         const newIntern = new Intern(ansIntern.name, ansIntern.EmployeeId, ansIntern.emailAddress)
         ansIntern.school = ansIntern.school
-        team.push(newIntern)
-        console.log("new Intern", ansIntern)}).then(()=>employeeMenu())
+        team.push(newIntern)}).then(()=>employeeMenu())
+        // console.log("new Intern", ansIntern)}).then(()=>employeeMenu())
 }
 
 
@@ -308,7 +308,7 @@ const genHtml = () => {
 
                 }      // while (nCnt<team.length) {
 
-                console.log("------------------------------")
+                console.log("================================FINAL STRING")
                 console.log(blockCard)
 /*
                     console.log(team)
