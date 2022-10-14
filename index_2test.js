@@ -281,7 +281,7 @@ const genHtml = () => {
                                             </div> 
                                             <p>Id: ${team[nCnt].id}</p>
                                             <hr>
-                                            Email:<a href="mailto:${team[nCnt].email}">${team[nCnt].email}</a>
+                                            <p>Email: ${team[nCnt].email}</p>
                                             <p>Github: <a href="https://github.com/${team[nCnt].github}" target="_blank">${team[nCnt].github}</a></p>
                                         </div>
                                     </div>
@@ -300,7 +300,7 @@ const genHtml = () => {
                                             </div> 
                                             <p>Id: ${team[nCnt].id}</p>
                                             <hr>
-                                            Email:<a href="mailto:${team[nCnt].email}">${team[nCnt].email}</a>
+                                            <p>Email: ${team[nCnt].email}</p>
                                             <p>School ${team[nCnt].getSchool()}</p>
                                         </div>
                                     </div>
