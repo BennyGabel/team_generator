@@ -61,7 +61,7 @@ const employeeMenu = () => {
              message: 'Enter the persons role is:',
              choices: ['Engineer', "Intern", "Quit"]
          }]).then(ansEmployee=>{
-            console.log(ansEmployee)
+            // console.log(ansEmployee)
             switch (ansEmployee.role) {
                 case "Engineer":
                     addEngineer()
@@ -79,6 +79,7 @@ const employeeMenu = () => {
                     console.log("-------------------------")
                     console.log(team)
                     console.log(team.length)
+/*
                     console.log(team[0])
                     console.log(team[0].name)
                     console.log(team[0].id)
@@ -89,7 +90,7 @@ const employeeMenu = () => {
 
                     console.log(team[2])
                     console.log(team[2].getRole())
-                    
+*/                    
                     genHtml()
                     break
             }
@@ -150,7 +151,7 @@ const employeeMenu = () => {
         const newEngineer = new Engineer(ansEngineer.name, ansEngineer.EmployeeId, ansEngineer.emailAddress)
         newEngineer.github = ansEngineer.github
         team.push(newEngineer)
-        console.log("new Engineer", newEngineer)
+        // console.log("new Engineer", newEngineer)
     }).then(()=>employeeMenu())
  }
 
@@ -204,7 +205,7 @@ const employeeMenu = () => {
             }            
         ]
     ).then(ansIntern=>{
-        console.log("ansIntern", ansIntern)
+        // console.log("ansIntern", ansIntern)
         const newIntern = new Intern(ansIntern.name, ansIntern.EmployeeId, ansIntern.emailAddress)
         ansIntern.school = ansIntern.school
         team.push(newIntern)
@@ -237,8 +238,78 @@ const genHtml = () => {
 
                 <div class="row">`
 
+    let blockCard = ""      // blockCard: Will build all the cards to be inserted
+    let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
+                            var nCnt = 1
+                for (let nCnt=0; nCnt<team.length; nCnt++) {
+                    switch (team[nCnt].getRole()) {
+                        case 'Manager' :
+                            blockOneC = 
+                               `<div class="col-md-6 col-lg-3">
+                                    <div class="card">
+                                        <div class="card-block">  
+                                            <div class="head-manager">
+                                                <h3>${team[nCnt].name}</h3>
+                                                <h5>Manager</h5>
+                                            </div> 
+                                            
+                                            <p>Id: ${team[nCnt].id}</p>
+                                            <hr>
+                                            <p>Email: ${team[nCnt].email}</p>
+                                            <p>Office Number: ${team[nCnt].officeNumber}</p>
+                
+                                        </div>    
+                                    </div>
+                                </div>`
+        
+                        case 'Engineer':
+                            blockOneC =
+                                `<div class="col-md-6 col-lg-3">
+                                    <div class="card">
+                                        <div class="card-block">
+                                            <div class="head-engineer">
+                                                <h3>${team[nCnt].name}</h3>
+                                                <h5>Engineer</h5>
+                                            </div> 
+                                            <p>Id: ${team[nCnt].id}</p>
+                                            <hr>
+                                            <p>Email: ${team[nCnt].email}</p>
+                                            <p>Github: ${team[nCnt].github}</p>
+                                        </div>
+                                    </div>
+                                </div>`
 
+                        case 'Intern'  :
+                            blockOneC =
+                                `<div class="col-md-6 col-lg-3">
+                                    <div class="card">
+                                        <div class="card-block">
+                                            <div class="head-intern">
+                                                <h3>${team[nCnt].name}</h3>
+                                                <h5>Intern</h5>
+                                            </div> 
+                                            <p>Id: ${team[nCnt].id}</p>
+                                            <hr>
+                                            <p>Email: ${team[nCnt].email}</p>
+                                            <p>School</p> ${team[nCnt].school}
+                                        </div>
+                                    </div>
+                                </div>`
+        
+                    }
 
+                    console.log('-------- blockOneC --------', nCnt + " of " + team.length)
+                    console.log(blockOneC)
+
+                    // if (nCnt>1) {
+                    //     blockCard = blockCard + '<br/>'
+                    // }
+                    blockCard = blockCard + blockOneC
+
+                }      // while (nCnt<team.length) {
+
+                console.log("------------------------------")
+                console.log(blockCard)
 /*
                     console.log(team)
                     console.log(team.length)
@@ -267,7 +338,7 @@ const genHtml = () => {
 
 }
 
-console.log("Before askManager")
+// console.log("Before askManager")
 
 
 askManager().then(answers => {
@@ -276,6 +347,6 @@ askManager().then(answers => {
 
     team.push(newManager)
 
-    console.log(newManager)
+    // console.log(newManager)
 })
 .then(()=>employeeMenu())
