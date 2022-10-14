@@ -1,4 +1,5 @@
-// const { default: inquirer } = require('inquirer');
+const fs = require('fs');
+
 const inquirer = require('inquirer');
 
 const Employee = require('./lib/Employee')
@@ -225,7 +226,9 @@ const genHtml = () => {
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
             </head>
-        <body>`
+        <body>
+        
+        `
 
     blockTitle =
             `<div class="col-xs-1 company-title">
@@ -236,7 +239,8 @@ const genHtml = () => {
             
             <div class="container">
 
-                <div class="row">`
+                <div class="row">
+                `
 
     let blockCard = ""      // blockCard: Will build all the cards to be inserted
     let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
@@ -262,7 +266,8 @@ const genHtml = () => {
                 
                                         </div>    
                                     </div>
-                                </div>`
+                                </div>
+                                `
                             break
         
                         case 'Engineer':
@@ -280,7 +285,8 @@ const genHtml = () => {
                                             <p>Github: ${team[nCnt].github}</p>
                                         </div>
                                     </div>
-                                </div>`
+                                </div>
+                                `
                                 break
 
                         case 'Intern'  :
@@ -298,7 +304,8 @@ const genHtml = () => {
                                             <p>School</p> ${team[nCnt].school}
                                         </div>
                                     </div>
-                                </div>`
+                                </div>
+                                `
                                 break
         
                     }
@@ -341,6 +348,9 @@ const genHtml = () => {
         </body>
     </html>`
 
+    allBlocks = blockHead + blockTitle + blockCard + blockFoot
+    // fs.writeFileSync('./lib/index.html', blockHead + blockTitle + blockCard + blockFoot)  
+    fs.writeFileSync('./dist/index.html', allBlocks)  
 }
 
 // console.log("Before askManager")
