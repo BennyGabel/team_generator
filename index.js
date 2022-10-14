@@ -89,13 +89,8 @@ const employeeMenu = () => {
 
                     console.log(team[2])
                     console.log(team[2].getRole())
-
-
-                    // //console.log("Manager" ,  Manager[0]['name'] )
-                    // console.log("Manager" ,  Manager.length )
-                    // console.log("Engineer",  Engineer.length)
-                    // console.log("Intern"  ,  Intern[0]['school'])
                     
+                    genHtml()
                     break
             }
 
@@ -217,6 +212,60 @@ const employeeMenu = () => {
 }
 
 
+const genHtml = () => {
+    blockHead = 
+    `<!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <title>Bootstrap Example</title>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="../dist/style.css">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+            </head>
+        <body>`
+
+    blockTitle =
+            `<div class="col-xs-1 company-title">
+                <h1>Company Title</h1>
+            </div>
+            
+            <br/>
+            
+            <div class="container">
+
+                <div class="row">`
+
+
+
+/*
+                    console.log(team)
+                    console.log(team.length)
+                    console.log(team[0])
+                    console.log(team[0].name)
+                    console.log(team[0].id)
+                    console.log(team[0].getRole())
+
+                    console.log(team[1])
+                    console.log(team[1].getRole())
+
+                    console.log(team[2])
+                    console.log(team[2].getRole())
+
+*/
+
+
+
+
+    blockFoot =
+            `  </div>
+
+            </div> 
+        </body>
+    </html>`
+
+}
 
 console.log("Before askManager")
 

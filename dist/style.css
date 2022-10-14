@@ -10,18 +10,15 @@
 
 */
 
-.row {
-    padding-top: 1cm;
-    padding-bottom: 1cm;
+.card {
+    padding-bottom: 0.5cm;
 }
 
 .company-title{
     text-align: center;
     background-color: red;
     height: 100px;
-    vertical-align:middle;
-
-
+    padding-top: .5cm;
 }
 .head-manager{
     /* background-color: rgb(114, 146, 156); */
