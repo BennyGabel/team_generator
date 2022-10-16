@@ -385,7 +385,7 @@ const genHtml = () => {
 
 
 //------------
-// Generate HTML by Order which was entered
+// Generate HTML sorted by role
 const genSortHtml = () => {
     blockHead = 
     `<!DOCTYPE html>
@@ -525,7 +525,7 @@ const genSortHtml = () => {
     // fs.writeFileSync('./lib/index.html', blockHead + blockTitle + blockCard + blockFoot)  
     fs.writeFileSync('./dist/index.html', allBlocks)  
 }
-// End function - Generate HTML by Order which was entered
+// End function - Generate HTML sorted by role
 //------------
 
 
