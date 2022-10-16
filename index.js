@@ -242,6 +242,10 @@ const genHtml = () => {
                 <div class="row">
                 `
 
+
+// **** Up TO HERE. Last thing to be done, create a filter by Engineer and a filter by Intern
+// **** To Display MANAGERS, ENGINEERS, INTERNS each section together
+                
     let blockCard = ""      // blockCard: Will build all the cards to be inserted
     let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
                             var nCnt = 1
