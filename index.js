@@ -84,11 +84,13 @@ const employeeMenu = () => {
                     break
 
                 case "Quit":
+/*
                     console.log("Ending questions")
 
                     console.log("-------------------------")
                     console.log(team)
                     console.log(team.length)
+*/
 /*
                     console.log(team[0])
                     console.log(team[0].name)
@@ -353,8 +355,8 @@ const genHtml = () => {
         
                     }
 
-                    console.log('-------- blockOneC --------', nCnt + " of " + team.length)
-                    console.log(blockOneC)
+//                    console.log('-------- blockOneC --------', nCnt + " of " + team.length)
+//                    console.log(blockOneC)
 
                     // if (nCnt>1) {
                     //     blockCard = blockCard + '<br/>'
@@ -363,8 +365,8 @@ const genHtml = () => {
 
                 }      // while (nCnt<team.length) {
 
-                console.log("================================FINAL STRING")
-                console.log(blockCard)
+//                console.log("================================FINAL STRING")
+//                console.log(blockCard)
 
     blockFoot =
             `  </div>
@@ -412,13 +414,8 @@ const genSortHtml = () => {
                 <div class="row">
                 `
 
-
-// **** Up TO HERE. Last thing to be done, create a filter by Engineer and a filter by Intern
-// **** To Display MANAGERS, ENGINEERS, INTERNS each section together
-                
-    let blockCard = ""      // blockCard: Will build all the cards to be inserted
-    let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
-                            var nCnt = 1
+                let blockCard = ""      // blockCard: Will build all the cards to be inserted
+                let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
 
                 // Change logic, will loop 3 times Manager, Engineer, Intern
                 for (let nRole=1; nRole<=3; nRole++) {
@@ -434,12 +431,13 @@ const genSortHtml = () => {
                             break
                     }
 
+                    // Create  < just1Role >  array as a filter from teams by 1 role 
                     const just1Role = team.filter(employees => employees.constructor.name == evalRole)
-
 
                     for (let nCnt=0; nCnt<just1Role.length; nCnt++) {
                         cRole = just1Role[nCnt].getRole()
                         // switch (team[nCnt].getRole()) {
+                        // For this function <genSortHtml> since will loop by "just1Role" instead of "team"
                         switch (cRole) {
                             case 'Manager' :
                                 blockOneC = 
@@ -502,8 +500,8 @@ const genSortHtml = () => {
             
                         }
 
-                        console.log('-------- blockOneC --------', nCnt + " of " + team.length)
-                        console.log(blockOneC)
+//                        console.log('-------- blockOneC --------', nCnt + " of " + team.length)
+//                        console.log(blockOneC)
 
                         // if (nCnt>1) {
                         //     blockCard = blockCard + '<br/>'
@@ -513,8 +511,8 @@ const genSortHtml = () => {
                     }      // while (nCnt<team.length) {
                 }          // for (let nRole=1; nRole<=3; nRol2++) {
 
-                console.log("================================FINAL STRING")
-                console.log(blockCard)
+//                console.log("================================FINAL STRING")
+//                console.log(blockCard)
 
     blockFoot =
             `  </div>
