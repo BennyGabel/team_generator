@@ -11,9 +11,6 @@ let team = []
 
 var nId = 0
 
-
-
-
 // Inquirer for a Manager.
 // Will ONLY ASK FOR 1 MANAGER
 const askManager = () => {
@@ -56,10 +53,6 @@ const askManager = () => {
                            ]
                           )
                          }
-// End function     askManager    ---------------------------------------------
-
-
-
 
 // Inquirer menu/option/desicion Engineer ot Intern
 // Will loop through; allow user to select/add as many Engineers and or Interns unti user select Quit
@@ -110,13 +103,11 @@ const employeeMenu = () => {
                             choices: ['Entry order', "Grouped by Role"]}]).then(displayBy=>{
                                 switch (displayBy.sort) {
                                     case "Entry order":
-                                        // Generate HTML by Entry order
                                         genHtml()
                                         break
                                     case "Grouped by Role":
-                                        // Generate HTML sorted by role
-                                        genSortHtml()
-                                        break
+
+
                             }}
                     )
 
@@ -127,13 +118,10 @@ const employeeMenu = () => {
 
          })
     }
-// End function     employeeMenu    ---------------------------------------------
-
-
 
         
-// Inquirer for a addEngineer
-const addEngineer = () => {
+// Inquirer for a Engineer
+ const addEngineer = () => {
     inquirer.prompt(
         [{
             type: 'input',
@@ -186,13 +174,9 @@ const addEngineer = () => {
         // console.log("new Engineer", newEngineer)
     }).then(()=>employeeMenu())
  }
-// End function     addEngineer    ---------------------------------------------
 
-
-
-
-// Inquirer for a Intern
-const addIntern = () => {
+ // Inquirer for a Intern
+ const addIntern = () => {
     inquirer.prompt(
         [
             {
@@ -247,12 +231,8 @@ const addIntern = () => {
         team.push(newIntern)}).then(()=>employeeMenu())
         // console.log("new Intern", ansIntern)}).then(()=>employeeMenu())
 }
-// End function     addIntern    ---------------------------------------------
 
 
-
-
-// Generate HTML by Order which was entered
 const genHtml = () => {
     blockHead = 
     `<!DOCTYPE html>
@@ -377,160 +357,6 @@ const genHtml = () => {
     // fs.writeFileSync('./lib/index.html', blockHead + blockTitle + blockCard + blockFoot)  
     fs.writeFileSync('./dist/index.html', allBlocks)  
 }
-// End function - Generate HTML by Order which was entered
-
-
-
-
-//------------
-// Generate HTML by Order which was entered
-const genSortHtml = () => {
-    blockHead = 
-    `<!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <title>Team Generator</title>
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="../dist/style.css">
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-            </head>
-        <body>
-        
-        `
-
-    blockTitle =
-            `<div class="col-xs-1 company-title">
-                <h1>Company Title</h1>
-            </div>
-            
-            <br/>
-            
-            <div class="container">
-
-                <div class="row">
-                `
-
-
-// **** Up TO HERE. Last thing to be done, create a filter by Engineer and a filter by Intern
-// **** To Display MANAGERS, ENGINEERS, INTERNS each section together
-                
-    let blockCard = ""      // blockCard: Will build all the cards to be inserted
-    let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
-                            var nCnt = 1
-
-                // Change logic, will loop 3 times Manager, Engineer, Intern
-                for (let nRole=1; nRole<=3; nRole++) {
-                    switch (nRole) {
-                        case 1:
-                            evalRole =  'Manager'
-                            break
-                        case 2:
-                            evalRole =  'Engineer'
-                            break
-                        case 3:
-                            evalRole =  'Intern'
-                            break
-                    }
-
-                    const just1Role = team.filter(employees => employees.constructor.name == evalRole)
-
-
-                    for (let nCnt=0; nCnt<just1Role.length; nCnt++) {
-                        cRole = just1Role[nCnt].getRole()
-                        // switch (team[nCnt].getRole()) {
-                        switch (cRole) {
-                            case 'Manager' :
-                                blockOneC = 
-                                `<div class="col-md-6 col-lg-3">
-                                        <div class="card">
-                                            <div class="card-block">  
-                                                <div class="head-manager">
-                                                    <h3>${just1Role[nCnt].name}</h3>
-                                                    <h5>Manager</h5>
-                                                </div> 
-                                                
-                                                <p>Id: ${just1Role[nCnt].id}</p>
-                                                <hr>
-                                                Email:<a href="mailto:${just1Role[nCnt].email}">${team[nCnt].email}</a>
-                                                <p>Office Number: ${just1Role[nCnt].officeNumber}</p>
-                    
-                                            </div>    
-                                        </div>
-                                    </div>
-                                    `
-                                break
-            
-                            case 'Engineer':
-                                blockOneC =
-                                    `<div class="col-md-6 col-lg-3">
-                                        <div class="card">
-                                            <div class="card-block">
-                                                <div class="head-engineer">
-                                                    <h3>${just1Role[nCnt].name}</h3>
-                                                    <h5>Engineer</h5>
-                                                </div> 
-                                                <p>Id: ${just1Role[nCnt].id}</p>
-                                                <hr>
-                                                Email:<a href="mailto:${just1Role[nCnt].email}">${just1Role[nCnt].email}</a>
-                                                <p>Github: <a href="https://github.com/${team[nCnt].github}" target="_blank">${just1Role[nCnt].github}</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    `
-                                    break
-
-                            case 'Intern'  :
-                                blockOneC =
-                                    `<div class="col-md-6 col-lg-3">
-                                        <div class="card">
-                                            <div class="card-block">
-                                                <div class="head-intern">
-                                                    <h3>${just1Role[nCnt].name}</h3>
-                                                    <h5>Intern</h5>
-                                                </div> 
-                                                <p>Id: ${just1Role[nCnt].id}</p>
-                                                <hr>
-                                                Email:<a href="mailto:${just1Role[nCnt].email}">${just1Role[nCnt].email}</a>
-                                                <p>School ${just1Role[nCnt].getSchool()}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    `
-                                    break
-            
-                        }
-
-                        console.log('-------- blockOneC --------', nCnt + " of " + team.length)
-                        console.log(blockOneC)
-
-                        // if (nCnt>1) {
-                        //     blockCard = blockCard + '<br/>'
-                        // }
-                        blockCard = blockCard + blockOneC
-
-                    }      // while (nCnt<team.length) {
-                }          // for (let nRole=1; nRole<=3; nRol2++) {
-
-                console.log("================================FINAL STRING")
-                console.log(blockCard)
-
-    blockFoot =
-            `  </div>
-
-            </div> 
-        </body>
-    </html>`
-
-    allBlocks = blockHead + blockTitle + blockCard + blockFoot
-    // fs.writeFileSync('./lib/index.html', blockHead + blockTitle + blockCard + blockFoot)  
-    fs.writeFileSync('./dist/index.html', allBlocks)  
-}
-// End function - Generate HTML by Order which was entered
-//------------
-
-
 
 // Start program, calling askManager and then employeeMenu
 askManager().then(answers => {
