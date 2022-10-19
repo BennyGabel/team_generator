@@ -1,0 +1,33 @@
+$ node index
+? Enter the manager's name: manager
+? Enter the manager's id: 1
+? Enter the manager's email: man@man.com
+? Enter the manager's office number: 1
+? Enter the persons role is: Intern
+? Enter  name: Int1
+? Enter the intern's id: 2
+? Enter the intern's email: int1@int1.com
+? Enter the intern's school: school 1
+? Enter the persons role is: Intern
+? Enter  name: Int2
+? Enter the intern's id: 3
+? Enter the intern's email: int2@int2.com
+? Enter the intern's school: school 2
+? Enter the persons role is: Engineer
+? Enter  name: Benny Gabel
+? Enter the engineer's id: 4
+? Enter the engineer's email: bennygabel@gmail.com
+? Enter the engineer's github username: BennyGabel
+manag? Enter the persons role is: Intern
+? Enter  name: int3
+? Enter the intern's id: 5
+? Enter the intern's email: int3@int3.com
+? Enter the intern's school: school3
+? Enter the persons role is: Engineer
+? Enter  name: Eng2
+? Enter the engineer's id: 6
+? Enter the engineer's email: Eng2@eng.com
+? Enter the engineer's github username: Please Enter the engineer's github username!!:
+? Enter the engineer's github username: BennyGabel
+? Enter the persons role is: Quit
+? Sorted by: Entry order
