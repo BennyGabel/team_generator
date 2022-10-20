@@ -71,16 +71,13 @@ const employeeMenu = () => {
              message: 'Enter the persons role is:',
              choices: ['Engineer', "Intern", "Quit"]
          }]).then(ansEmployee=>{
-            // console.log(ansEmployee)
             switch (ansEmployee.role) {
                 case "Engineer":
                     addEngineer()
-                    // console.log(team)
                     break
 
                 case "Intern":
                     addIntern()
-                    // console.log(team)
                     break
 
                 case "Quit":
@@ -88,10 +85,12 @@ const employeeMenu = () => {
                     console.log("Ending questions")
 
                     console.log("-------------------------")
+
+//                  Evaluating values
+
                     console.log(team)
                     console.log(team.length)
-*/
-/*
+
                     console.log(team[0])
                     console.log(team[0].name)
                     console.log(team[0].id)
@@ -181,11 +180,9 @@ const addEngineer = () => {
             }
         }]                            
     ).then(ansEngineer=>{
-//        console.log("ansEngineer", ansEngineer)
         const newEngineer = new Engineer(ansEngineer.name, ansEngineer.EmployeeId, ansEngineer.emailAddress)
         newEngineer.github = ansEngineer.github
         team.push(newEngineer)
-        // console.log("new Engineer", newEngineer)
     }).then(()=>employeeMenu())
  }
 // End function     addEngineer    ---------------------------------------------
@@ -243,11 +240,9 @@ const addIntern = () => {
             }            
         ]
     ).then(ansIntern=>{
-        // console.log("ansIntern", ansIntern)
         const newIntern = new Intern(ansIntern.name, ansIntern.EmployeeId, ansIntern.emailAddress)
         newIntern.school = ansIntern.school
         team.push(newIntern)}).then(()=>employeeMenu())
-        // console.log("new Intern", ansIntern)}).then(()=>employeeMenu())
 }
 // End function     addIntern    ---------------------------------------------
 
@@ -283,10 +278,6 @@ const genHtml = () => {
                 <div class="row">
                 `
 
-
-// **** Up TO HERE. Last thing to be done, create a filter by Engineer and a filter by Intern
-// **** To Display MANAGERS, ENGINEERS, INTERNS each section together
-                
     let blockCard = ""      // blockCard: Will build all the cards to be inserted
     let blockOneC = ""      // blockOneC: Will build one card at the time and will update/insert into bockCard
                             var nCnt = 1
@@ -538,6 +529,5 @@ askManager().then(answers => {
 
     team.push(newManager)
 
-    // console.log(newManager)
 })
 .then(()=>employeeMenu())
