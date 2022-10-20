@@ -12,6 +12,7 @@
 - [Github](#github)
 - [Notes](#notes)
 - [License](#license)
+- [Walk through Video](#video)
 
 ## Installation
 1) Pre requisit, having Node js pre installed 
@@ -22,14 +23,8 @@ node index.js
 
 ![Application](/screenshots/application.jpg?raw=true)
 
-![Employees - by order entered](/screenshots/eemployees by order entered.jpg?raw=true)
-
-![Employees - sorted by role](/screenshots/employees sorted by Role.jpg?raw=true)
-
-
 
 ## Credits
-
 Author: Benny Gabel
 
 ## Email: 
@@ -42,7 +37,9 @@ Github Repository:  (https://github.com/BennyGabel/team_generator)
 Project URL: ()
 
 ## Notes: 
-Main branch is **deploy**
+This project is not deployed.
+In the /src/ directory are files I used to build the application/test.
+In the /screenshots/ directory are 3 screenshots: application and two ways to sort the results upon user selection.
 
 ## License  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -53,4 +50,5 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 ---
 
+## video
 https://www.youtube.com/watch?v=JtcoqKZYuMg
